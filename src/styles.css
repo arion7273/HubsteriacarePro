@@ -11,6 +11,7 @@
   --amber: #b86e00;
   --red: #c62828;
   --green: #2e7d32;
+  --violet: #5e35b1;
   --shadow: 0 16px 40px rgba(23, 32, 42, 0.08);
 }
 
@@ -45,6 +46,42 @@ button {
   flex-direction: column;
   gap: 14px;
   padding: 10px 0 18px;
+}
+
+.module-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 -16px 14px;
+  padding: 10px 16px;
+  border-block: 1px solid var(--line);
+  background: rgba(245, 247, 249, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.module-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.module-nav a[aria-current="page"] {
+  border-color: var(--brand);
+  background: #eaf3ff;
+  color: var(--brand-dark);
 }
 
 .eyebrow {
@@ -100,6 +137,90 @@ h2 {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.resident-command {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.resident-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resident-summary div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.resident-summary span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.resident-summary strong {
+  overflow-wrap: anywhere;
+}
+
+.resident-tabs,
+.segmented-control {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.resident-tabs button,
+.segmented-control button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0 10px;
+}
+
+.segmented-control {
+  margin: 0 0 12px;
+}
+
+.segmented-control button[aria-pressed="true"] {
+  border-color: var(--brand);
+  background: #eaf3ff;
+  color: var(--brand-dark);
+}
+
+.acuity-badge,
+.safe-chip {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.acuity-badge {
+  background: #ffebee;
+  color: var(--red);
+}
+
+.safe-chip {
+  background: #ede7f6;
+  color: var(--violet);
+}
+
+.ai-panel p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .hero-panel {
@@ -253,6 +374,11 @@ h2 {
   color: #455a64;
 }
 
+.status-pill.refused {
+  background: #fce4ec;
+  color: #ad1457;
+}
+
 .resident-action {
   display: grid;
   gap: 4px;
@@ -292,9 +418,52 @@ th {
   text-transform: uppercase;
 }
 
+.task-board {
+  margin-top: 14px;
+}
+
+.task-lanes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.task-lane {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.task-lane h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.task-lane div {
+  display: grid;
+  gap: 8px;
+}
+
+.task-lane button {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  padding: 10px 12px;
+  overflow-wrap: anywhere;
+}
+
 @media (min-width: 768px) {
   .app-shell {
     padding: 22px;
+  }
+
+  .module-nav {
+    margin-inline: -22px;
+    padding-inline: 22px;
   }
 
   .topbar {
@@ -321,14 +490,33 @@ th {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .resident-command {
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+  }
+
+  .resident-summary,
+  .resident-tabs,
+  .segmented-control {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .task-lanes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1100px) {
   .app-shell {
     padding: 28px;
+  }
+
+  .module-nav {
+    margin-inline: -28px;
+    padding-inline: 28px;
   }
 
   .metric-grid {
