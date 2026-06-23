@@ -1,0 +1,11 @@
+{
+  "name": "hubsteriacarepro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mobile-first EHR and eMAR SaaS starter for HubsteriaCarePro.",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-responsive-rules.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}
