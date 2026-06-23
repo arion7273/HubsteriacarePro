@@ -18,7 +18,11 @@ const checks = [
   ["responsive breakpoints exist", /@media\s*\(min-width:\s*768px\)/.test(css) && /@media\s*\(min-width:\s*1100px\)/.test(css)],
   ["overflow protection exists", /overflow-wrap:\s*anywhere/.test(css)],
   ["quick actions exist", /quickActions/.test(js)],
-  ["regression clinical states exist", /overdue|due now|PRN|refused/i.test(`${html}\n${js}`)]
+  ["regression clinical states exist", /overdue|due now|PRN|refused/i.test(`${html}\n${js}`)],
+  ["phase 2 navigation exists", /module-nav/.test(html) && /#med-pass/.test(html)],
+  ["resident command exists", /resident-command/.test(html) && /resident-summary/.test(css)],
+  ["task board exists", /taskLanes/.test(js) && /task-lanes/.test(css)],
+  ["AI stays optional", /No AI action blocks med pass or charting/.test(html)]
 ];
 
 const failures = checks.filter(([, passed]) => !passed);
