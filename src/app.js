@@ -6,10 +6,11 @@ const quickActions = [
 ];
 
 const medications = [
-  { resident: "Maria Santos", room: "112B", med: "Lisinopril 10 mg", state: "Overdue", detail: "Due 8:00 AM, BP check required" },
-  { resident: "Evelyn Brooks", room: "108A", med: "Metformin 500 mg", state: "Due now", detail: "Give with breakfast" },
-  { resident: "Thomas Reed", room: "121A", med: "Acetaminophen 325 mg", state: "PRN", detail: "Pain score required before administration" },
-  { resident: "Irene Patel", room: "117C", med: "Warfarin 2 mg", state: "Hold", detail: "Pending INR confirmation" }
+  { resident: "Maria Santos", room: "112B", med: "Lisinopril 10 mg", state: "Overdue", detail: "Due 8:00 AM, BP check required", action: "Document now" },
+  { resident: "Evelyn Brooks", room: "108A", med: "Metformin 500 mg", state: "Due now", detail: "Give with breakfast", action: "Administer" },
+  { resident: "Thomas Reed", room: "121A", med: "Acetaminophen 325 mg", state: "PRN", detail: "Pain score required before administration", action: "Assess pain" },
+  { resident: "Irene Patel", room: "117C", med: "Warfarin 2 mg", state: "Hold", detail: "Pending INR confirmation", action: "Review lab" },
+  { resident: "Andre Miller", room: "124D", med: "Furosemide 20 mg", state: "Refused", detail: "Resident declined at bedside, follow-up required", action: "Record refusal" }
 ];
 
 const residents = [
@@ -17,6 +18,12 @@ const residents = [
   { name: "Thomas Reed", unit: "Memory Care", risk: "New wound photo", action: "Upload measurement", owner: "RN Jamal" },
   { name: "Irene Patel", unit: "North Hall", risk: "Vitals out of range", action: "Notify provider", owner: "RN Lee" },
   { name: "Evelyn Brooks", unit: "Rehab", risk: "Discharge planning", action: "Finalize med reconciliation", owner: "Case Mgmt" }
+];
+
+const tasks = [
+  { lane: "Now", items: ["Overdue BP-linked med", "Provider call for vitals", "Unsigned pharmacy order"] },
+  { lane: "This shift", items: ["Fall-risk care plan review", "Wound measurement photo", "Discharge med reconciliation"] },
+  { lane: "Monitor", items: ["PRN pain reassessment", "Infection watch follow-up", "Family update request"] }
 ];
 
 const byId = (id) => document.getElementById(id);
@@ -30,11 +37,11 @@ byId("medList").innerHTML = medications
     <article class="med-card">
       <div>
         <strong>${item.resident}</strong>
-        <span>${item.room} · ${item.med}</span>
+        <span>${item.room} - ${item.med}</span>
       </div>
       <div class="status-pill ${item.state.toLowerCase().replaceAll(" ", "-")}">${item.state}</div>
       <p>${item.detail}</p>
-      <button>Document</button>
+      <button>${item.action}</button>
     </article>
   `)
   .join("");
@@ -78,6 +85,17 @@ byId("mobileCensus").innerHTML = residents
       <div class="resident-action">
         <span>${resident.action}</span>
         <small>${resident.owner}</small>
+      </div>
+    </article>
+  `)
+  .join("");
+
+byId("taskLanes").innerHTML = tasks
+  .map((lane) => `
+    <article class="task-lane">
+      <h3>${lane.lane}</h3>
+      <div>
+        ${lane.items.map((item) => `<button>${item}</button>`).join("")}
       </div>
     </article>
   `)
