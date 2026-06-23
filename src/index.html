@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HubsteriaCarePro EHR + eMAR</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HubsteriaCarePro</p>
+          <h1>EHR + eMAR command center</h1>
+        </div>
+        <div class="shift-chip" aria-label="Current facility and shift">
+          <span>North Hall</span>
+          <strong>AM Pass</strong>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-panel" aria-labelledby="dashboard-title">
+          <div>
+            <p class="eyebrow">Clinical operations</p>
+            <h2 id="dashboard-title">Fast resident-centered care without legacy EHR friction.</h2>
+            <p class="hero-copy">Built around medication pass, risk follow-up, orders, charting, and mobile workflows for iPad portrait, iPad landscape, and desktop.</p>
+          </div>
+          <div class="hero-actions" id="quickActions"></div>
+        </section>
+
+        <section class="metric-grid" aria-label="Facility snapshot">
+          <article class="metric-card urgent">
+            <span>Overdue meds</span>
+            <strong>7</strong>
+            <p>3 residents need immediate review</p>
+          </article>
+          <article class="metric-card">
+            <span>Unsigned orders</span>
+            <strong>12</strong>
+            <p>6 are pharmacy-impacting</p>
+          </article>
+          <article class="metric-card">
+            <span>Risk alerts</span>
+            <strong>9</strong>
+            <p>Falls, wounds, vitals, infection watch</p>
+          </article>
+          <article class="metric-card">
+            <span>Documentation</span>
+            <strong>94%</strong>
+            <p>Shift completion trend</p>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">eMAR</p>
+                <h2>Medication pass</h2>
+              </div>
+              <button class="icon-button" aria-label="Filter medication pass">Filter</button>
+            </div>
+            <div class="med-list" id="medList"></div>
+          </div>
+
+          <div class="panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">EHR</p>
+                <h2>Resident priorities</h2>
+              </div>
+              <button class="icon-button" aria-label="Add clinical note">Note</button>
+            </div>
+            <div class="resident-list" id="residentList"></div>
+          </div>
+        </section>
+
+        <section class="panel desktop-only" aria-labelledby="desktop-census-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Desktop review</p>
+              <h2 id="desktop-census-title">Census and compliance</h2>
+            </div>
+            <button class="icon-button">Export</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Resident</th>
+                  <th>Unit</th>
+                  <th>Status</th>
+                  <th>Next action</th>
+                  <th>Owner</th>
+                </tr>
+              </thead>
+              <tbody id="censusRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel mobile-only" aria-labelledby="mobile-census-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mobile review</p>
+              <h2 id="mobile-census-title">Census and compliance</h2>
+            </div>
+          </div>
+          <div class="card-grid" id="mobileCensus"></div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
