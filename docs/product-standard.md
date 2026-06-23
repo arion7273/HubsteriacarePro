@@ -43,3 +43,11 @@ HubsteriaCarePro should become a cleaner, faster, more mobile-friendly EHR and e
 - iPad portrait: two-column cards where useful, large tap targets.
 - iPad landscape: denser split views without hiding clinical actions.
 - Desktop: efficient dashboard and data review, with tables allowed only where they improve scanning.
+
+## Recommended Build Phases
+
+1. Phase 1: mobile-first command center, product memory, and responsive regression checks.
+2. Phase 2: resident command workspace, eMAR pass queue, task board, and optional AI shift summary.
+3. Phase 3: resident profile routes, medication documentation flows, order review, and audit events.
+4. Phase 4: multi-tenant API, role permissions, database schema, and facility-level reporting.
+5. Phase 5: clinical AI safeguards, explainable summaries, alert triage, and performance budgets.
