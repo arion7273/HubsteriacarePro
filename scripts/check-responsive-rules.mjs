@@ -22,7 +22,13 @@ const checks = [
   ["phase 2 navigation exists", /module-nav/.test(html) && /#med-pass/.test(html)],
   ["resident command exists", /resident-command/.test(html) && /resident-summary/.test(css)],
   ["task board exists", /taskLanes/.test(js) && /task-lanes/.test(css)],
-  ["AI stays optional", /No AI action blocks med pass or charting/.test(html)]
+  ["AI stays optional", /No AI action blocks med pass or charting/.test(html)],
+  ["medication documentation workflow exists", /documentation-workflow/.test(html) && /updateDocumentation/.test(js)],
+  ["one screen documentation actions exist", /data-doc-status/.test(html) && /Complete documentation/.test(html)],
+  ["resident profile opens from cards", /data-resident-index/.test(js) && /Open profile/.test(js)],
+  ["order review workflow exists", /order-review/.test(html) && /orderList/.test(js)],
+  ["audit trail workflow exists", /audit-trail/.test(html) && /addAuditEvent/.test(js)],
+  ["mobile nav can scroll", /overflow-x:\s*auto/.test(css) && /module-nav/.test(css)]
 ];
 
 const failures = checks.filter(([, passed]) => !passed);
