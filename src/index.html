@@ -19,6 +19,13 @@
         </div>
       </header>
 
+      <nav class="module-nav" aria-label="Primary workspace">
+        <a href="#med-pass" aria-current="page">eMAR</a>
+        <a href="#resident-command">Residents</a>
+        <a href="#task-board">Tasks</a>
+        <a href="#ai-assist">AI Assist</a>
+      </nav>
+
       <main>
         <section class="hero-panel" aria-labelledby="dashboard-title">
           <div>
@@ -52,14 +59,68 @@
           </article>
         </section>
 
+        <section class="resident-command" id="resident-command" aria-labelledby="resident-command-title">
+          <div class="resident-focus panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Resident command</p>
+                <h2 id="resident-command-title">Maria Santos</h2>
+              </div>
+              <div class="acuity-badge">High priority</div>
+            </div>
+            <div class="resident-summary">
+              <div>
+                <span>Room</span>
+                <strong>112B</strong>
+              </div>
+              <div>
+                <span>Vitals</span>
+                <strong>BP due</strong>
+              </div>
+              <div>
+                <span>Orders</span>
+                <strong>2 unsigned</strong>
+              </div>
+              <div>
+                <span>Care plan</span>
+                <strong>Fall risk</strong>
+              </div>
+            </div>
+            <div class="resident-tabs" aria-label="Resident workspace shortcuts">
+              <button>Summary</button>
+              <button>Meds</button>
+              <button>Orders</button>
+              <button>Notes</button>
+            </div>
+          </div>
+
+          <div class="panel ai-panel" id="ai-assist">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">AI assist</p>
+                <h2>Shift-ready summary</h2>
+              </div>
+              <span class="safe-chip">Optional</span>
+            </div>
+            <p>Maria has one overdue med tied to a BP check, two unsigned orders, and a fall-risk care plan follow-up. No AI action blocks med pass or charting.</p>
+            <button class="secondary-action">Draft nurse note</button>
+          </div>
+        </section>
+
         <section class="workspace-grid">
-          <div class="panel">
+          <div class="panel" id="med-pass">
             <div class="section-heading">
               <div>
                 <p class="eyebrow">eMAR</p>
                 <h2>Medication pass</h2>
               </div>
               <button class="icon-button" aria-label="Filter medication pass">Filter</button>
+            </div>
+            <div class="segmented-control" aria-label="Medication pass filters">
+              <button aria-pressed="true">Due</button>
+              <button>Overdue</button>
+              <button>PRN</button>
+              <button>Held</button>
             </div>
             <div class="med-list" id="medList"></div>
           </div>
@@ -74,6 +135,17 @@
             </div>
             <div class="resident-list" id="residentList"></div>
           </div>
+        </section>
+
+        <section class="panel task-board" id="task-board" aria-labelledby="task-board-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Care coordination</p>
+              <h2 id="task-board-title">Tasks by urgency</h2>
+            </div>
+            <button class="icon-button">Assign</button>
+          </div>
+          <div class="task-lanes" id="taskLanes"></div>
         </section>
 
         <section class="panel desktop-only" aria-labelledby="desktop-census-title">
